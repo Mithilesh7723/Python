@@ -1,3 +1,5 @@
+#Simple Quizz Application Using Python By Mithilesh Tiwari
+
 class User:
     def __init__(self, username, password):  
         self.username = username
