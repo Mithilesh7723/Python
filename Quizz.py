@@ -20,14 +20,14 @@ class Quiz:
 
     def present_question(self, question):
         print(question.question)
-        for i, option in enumerate(question.options):
-            print(f"{i + 1}. {option}")
+        for i in range(len(question.options)):
+            print(f"{i + 1}. {question.options[i]}")
 
     def get_user_answer(self, question):
         while True:
             try:
                 user_answer = int(input("Enter the number of your answer: "))
-                if 1 <= user_answer <= len(question.options):  
+                if 1 <= user_answer <= len(question.options):
                     return user_answer
                 else:
                     print("Invalid input. Please choose a valid option number.")
@@ -42,10 +42,10 @@ class Quiz:
             print(f"Sorry, the correct answer is {question.correct_answer}.")
 
     def run_quiz(self):
-        for question in self.questions:
-            self.present_question(question)
-            user_answer = self.get_user_answer(question) 
-            self.check_answer(question, user_answer)
+        for i in range(len(self.questions)):
+            self.present_question(self.questions[i])
+            user_answer = self.get_user_answer(self.questions[i])
+            self.check_answer(self.questions[i], user_answer)
         print(f"Quiz finished! Your final score is {self.score} out of {len(self.questions)}.")
 
 
@@ -103,6 +103,11 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
+
 
 
 if __name__ == "__main__":
